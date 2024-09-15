@@ -1,26 +1,11 @@
 #pragma once
 
 #include <QObject>
-
 #include <QVector>
 #include <QString>
 #include <QStringList>
 #include <QMap>
 
-class Example
-{
-public:
-    Example();
-    ~Example();
-
-    void setText(QString& text_)        { text = text_; }
-    void addTranslation(QString& tr_)   { translations << tr_; }
-
-    void showExample(); // Show a usage example.
-private:
-    QString text;               // Text of an example.
-    QStringList translations;   // Translations of the text of an example.
-};
 
 class Translation
 {
@@ -35,9 +20,8 @@ public:
     void setGender(QString& gen_)       { gen = gen_; }
     void addSynonym(QString& syn_)      { synonyms << syn_; }
     void addMeaning(QString& mean_)     { meanings << mean_; }
-    void addExample(Example& example_)  { examples.push_back(example_); }
 
-    void showTranslation(); // Show a translation.
+    void showTranslation() const; // Show a translation.
 private:
     QString text;   // Translation text.
     QString pos;    // Part of speech.
@@ -46,7 +30,6 @@ private:
     QString gen;    // Gender.
     QStringList synonyms;// Synonyms.
     QStringList meanings;   // Meanings.
-    QVector<Example> examples;// Usage examples.
 };
 
 class DictionaryEntry
@@ -88,4 +71,3 @@ private:
     QStringList directions; // Translation directions.
     QMap<QString, QString> languages; // Supported languages are values, their codes are keys.
 };
-
